@@ -7,8 +7,8 @@
           <input
             type="search"
             placeholder="Search location..."
-            ng-model="$parent.query"
-            ng-change="queryChanged()"
+            ng-model="$parent.$parent.query"
+            ng-change="$parent.queryChanged()"
           />
         </label>
       </ion-item>
