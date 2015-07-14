@@ -12,7 +12,10 @@
           />
         </label>
       </ion-item>
-      <ion-item ng-repeat="result in results">
+      <ion-item
+        ng-repeat="result in results"
+        ui-sref="app.weather"
+      >
         {{result.formatted_address}}
       </ion-item>
     </ion-list>
