@@ -10,6 +10,9 @@
           ng-change="queryChanged()"
         />
       </label>
+      <div class="item" ng-repeat="result in results">
+        {{result.formatted_address}}
+      </div>
     </div>
   </ion-content>
 </ion-view>
