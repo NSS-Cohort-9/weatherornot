@@ -14,7 +14,11 @@
       </ion-item>
       <ion-item
         ng-repeat="result in results"
-        ui-sref="app.weather"
+        ui-sref="app.weather({
+          city: result.formatted_address,
+          lat: result.geometry.location.lat,
+          long: result.geometry.location.lng
+        })"
       >
         {{result.formatted_address}}
       </ion-item>

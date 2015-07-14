@@ -46,7 +46,7 @@ angular.module('starter', [
   })
 
   .state('app.weather', {
-    url: '/weather',
+    url: '/weather/:city/:lat/:long',
     views: {
       menuContent: {
         templateUrl: 'templates/weather/weather.html',
