@@ -1,6 +1,6 @@
 angular.module('won.weather', [])
 
-  .controller('WeatherCtrl', function ($scope, $stateParams, $http, $ionicLoading) {
+  .controller('WeatherCtrl', function (weather, $scope, $stateParams, $ionicLoading) {
 
     $scope.city = $stateParams.city;
 
@@ -8,13 +8,21 @@ angular.module('won.weather', [])
       template: '<img src="http://i.imgur.com/EeE1Lsp.gif"><h1>Loading...</h1>'
     });
 
-    $http
-      .get('/api/forecast/' + $stateParams.lat + ',' + $stateParams.long)
+    weather
+      .getWeather($stateParams.lat, $stateParams.long)
       .success(function (data) {
         setTimeout(function () {
           $scope.current = data.currently;
           $ionicLoading.hide();
         }, 2000);
       });
+  })
 
+  .factory('weather', function ($http) {
+    return {
+      getWeather: function (lat, long) {
+        return $http
+          .get('/api/forecast/' + lat + ',' + long)
+      }
+    };
   });
