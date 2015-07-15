@@ -1,8 +1,8 @@
 angular.module('won.settings', [])
 
-  .controller('SettingsCtrl', function ($scope, $ionicLoading) {
-    $scope.scale = 'F';
-    $scope.precision = 1;
+  .controller('SettingsCtrl', function (settings, $scope, $ionicLoading) {
+    $scope.scale = settings.scale;
+    $scope.precision = settings.precision;
 
     $scope.randomScale = function () {
       $ionicLoading.show({
@@ -11,4 +11,11 @@ angular.module('won.settings', [])
       });
     };
 
+  })
+
+  .factory('settings', function () {
+    return {
+      scale: 'F',
+      precision: 1
+    };
   });
