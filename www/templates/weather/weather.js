@@ -5,7 +5,7 @@ angular.module('won.weather', [])
     $scope.city = $stateParams.city;
 
     $ionicLoading.show({
-      template: '<img src="http://i.imgur.com/EeE1Lsp.gif"><h1>Loading...</h1>'
+      template: '<img src="/img/loading.gif"><h1>Loading...</h1>'
     });
 
     weather
