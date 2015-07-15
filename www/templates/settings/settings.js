@@ -4,6 +4,18 @@ angular.module('won.settings', [])
     $scope.scale = settings.scale;
     $scope.precision = settings.precision;
 
+    $scope.scales = [
+     {symbol: 'F', name: 'Fahrenheit'},
+     {symbol: 'C', name: 'Celcuis'},
+     {symbol: 'K', name: 'Kelvin'},
+     {symbol: 'Ra', name: 'Rankine'},
+     {symbol: 'D', name: 'Delisle'},
+     {symbol: 'N', name: 'Newton'},
+     {symbol: 'Ré', name: 'Réaumur'},
+     {symbol: 'Rø', name: 'Rømer'},
+     {symbol: 'X', name: 'Random'}
+    ];
+
     $scope.$watch('precision', function () {
       settings.precision = $scope.precision;
     });
