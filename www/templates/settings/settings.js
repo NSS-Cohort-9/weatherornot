@@ -1,11 +1,11 @@
 angular.module('won.settings', [])
 
   .controller('SettingsCtrl', function (settings, $scope, $ionicLoading) {
-    $scope.scale = settings.getScale();
-    $scope.precision = settings.getPrecision();
+    $scope.scale = settings.scale;
+    $scope.precision = settings.precision;
 
     $scope.$watch('precision', function () {
-      settings.setPrecision($scope.precision);
+      settings.precision = $scope.precision;
     });
 
     $scope.$watch('scale', function () {
@@ -16,23 +16,23 @@ angular.module('won.settings', [])
         });
       }
 
-      settings.setScale($scope.scale);
+      settings.scale = $scope.scale;
     });
 
   })
 
   .factory('settings', function () {
     return {
-      getScale: function () {
+      get scale() {
         return localStorage.getItem('scale') || 'K';
       },
-      getPrecision: function () {
+      get precision() {
         return localStorage.getItem('precision') || '2';
       },
-      setScale: function (s) {
+      set scale(s) {
         localStorage.setItem('scale', s);
       },
-      setPrecision: function (p) {
+      set precision(p) {
         localStorage.setItem('precision', p);
       }
     };
