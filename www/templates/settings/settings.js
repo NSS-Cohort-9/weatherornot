@@ -59,6 +59,9 @@ angular.module('won.settings', [])
       set favorites(f) {
         var json = JSON.stringify(f);
         localStorage.setItem('favorites', json);
+      },
+      addFavorite: function (f) {
+        this.favorites = this.favorites.concat(f);
       }
     };
   });
