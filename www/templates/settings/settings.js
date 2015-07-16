@@ -62,6 +62,11 @@ angular.module('won.settings', [])
       },
       addFavorite: function (f) {
         this.favorites = this.favorites.concat(f);
+      },
+      removeFavorite: function (cityName) {
+        this.favorites = this.favorites.filter(function (fav) {
+          return fav.city !== cityName;
+        });
       }
     };
   });
