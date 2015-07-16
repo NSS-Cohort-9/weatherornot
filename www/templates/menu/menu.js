@@ -1,6 +1,5 @@
 angular.module('won.menu', [])
-  .controller('MenuCtrl', function (location, $stateParams, $state, $scope, $rootScope) {
-    $scope.params = $stateParams;
+  .controller('MenuCtrl', function (location, $scope, $rootScope) {
     $scope.favorites = location.favorites;
 
     $rootScope.$on('menuItemChanged', function (event, message) {
