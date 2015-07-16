@@ -4,6 +4,7 @@ angular.module('won.weather', [])
 
     $scope.city = $stateParams.city;
     $scope.scale = settings.scale;
+    $scope.precision = settings.precision;
 
     $ionicLoading.show({
       template: '<img src="/img/loading.gif"><h1>Loading...</h1>'
