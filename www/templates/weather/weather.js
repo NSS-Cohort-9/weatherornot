@@ -1,8 +1,9 @@
 angular.module('won.weather', [])
 
-  .controller('WeatherCtrl', function (weather, $scope, $stateParams, $ionicLoading) {
+  .controller('WeatherCtrl', function (weather, settings, $scope, $stateParams, $ionicLoading) {
 
     $scope.city = $stateParams.city;
+    $scope.scale = settings.scale;
 
     $ionicLoading.show({
       template: '<img src="/img/loading.gif"><h1>Loading...</h1>'
@@ -18,11 +19,20 @@ angular.module('won.weather', [])
       });
   })
 
-  .factory('weather', function ($http) {
+  .factory('weather', function (settings, $http) {
+    var API_URL = '/api/forecast/';
+
     return {
       getWeather: function (lat, long) {
-        return $http
-          .get('/api/forecast/' + lat + ',' + long)
+        var url = API_URL + lat + ',' + long + '?units=';
+
+        if (settings.scale === 'C') {
+          url += 'si';
+        } else {
+          url += 'us';
+        }
+
+        return $http.get(url);
       }
     };
   });
