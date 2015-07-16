@@ -51,6 +51,28 @@ angular.module('won.settings', [])
   })
 
   .factory('location', function () {
+    var defaultFavorites = [{
+        city: 'Cupertino, CA',
+        lat: '37.3190',
+        long: '-122.0293'
+      },{
+        city: 'Mountain View, CA',
+        lat: '37.3897',
+        long: '-122.0816'
+      },{
+        city: 'Redmond, WA',
+        lat: '47.6786',
+        long: '-122.1310'
+      },{
+        city: 'Nashville, TN',
+        lat: '36.1658',
+        long: '-86.7777'
+      }];
+
+    if (!localStorage.favorites) {
+      localStorage.favorites = JSON.stringify(defaultFavorites);
+    }
+
     return {
       get favorites() {
         var json = localStorage.getItem('favorites');
